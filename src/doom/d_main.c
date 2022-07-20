@@ -477,10 +477,14 @@ void D_DoomLoop (void)
 	G_BeginRecording ();
 
     main_loop_started = true;
+    DEH_printf("About to set window title.\n");
 
     I_SetWindowTitle(gamedescription);
+    DEH_printf("About to graphics check command line.\n");
     I_GraphicsCheckCommandLine();
+    DEH_printf("About to set grab mouse callback line.\n");
     I_SetGrabMouseCallback(D_GrabMouseCallback);
+    DEH_printf("About to init graphics.\n");
     I_InitGraphics();
     EnableLoadingDisk();
 
@@ -1943,6 +1947,7 @@ void D_DoomMain (void)
 
     DEH_printf("ST_Init: Init status bar.\n");
     ST_Init ();
+    DEH_printf("ST_Init: done.\n");
 
     // If Doom II without a MAP01 lump, this is a store demo.
     // Moved this here so that MAP01 isn't constantly looked up
@@ -2002,6 +2007,7 @@ void D_DoomMain (void)
 	    D_StartTitle ();                // start up intro loop
     }
 
+    DEH_printf("About to loop.\n");
     D_DoomLoop ();  // never returns
 }
 
